@@ -36,6 +36,8 @@ h1, h2 {
     padding: 8px;
     border-radius: 8px;
     transition: background-color 0.4s;
+    display: flex;
+    align-items: center;
 }
 
 #action_return:hover {
@@ -52,6 +54,23 @@ h1, h2 {
 
 #action_create:hover {
     background-color: rgb(0, 110, 110);
+    color: white;
+}
+
+#action_save {
+    background-color: rgb(0, 255, 0);
+    color: black;
+    border: none;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.4s;
+}
+
+#action_save:hover {
+    cursor: pointer;
+    background-color: rgb(0, 138, 0);
     color: white;
 }
 
