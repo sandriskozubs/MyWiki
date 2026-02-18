@@ -23,9 +23,8 @@
 
             header("Location: select.php");
         }
-            
-        
 
+        
         mysqli_close($con);
     }
 
@@ -40,7 +39,7 @@
 </head>
 <body>
 
-    <h1>Your own local Wiki</h1>
+    <h1>Your own Wiki</h1>
 
     <form method="POST" action="">
 
@@ -51,5 +50,6 @@
         </div>
 
     </form>
+
 </body>
 </html>
