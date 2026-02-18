@@ -3,6 +3,7 @@ MyWiki pamatprincips:
 	Administratori var skatīt, rediģēt, veidot un dzēst rakstus.
 
 	Rakstiem tiek saglabāti izveides datumi un rediģēšanas datumi.
+	
 		Rakstos būs iespējams pievienot tekstu un attēlu.
 		!! Attēli vēl nav ieviesti !!
 		
