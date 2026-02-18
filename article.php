@@ -29,5 +29,13 @@
             echo "</div>";
 
     ?>
+
+    <div class="action_box">
+        <a id="return_button" href="select.php">
+            <span id="action_return">
+                <- Return
+            </span>
+        </a>
+    </div>
 </body>
 </html>
