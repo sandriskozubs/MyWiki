@@ -18,6 +18,18 @@
 
     <h1>What are you looking for?</h1>
 
+    <div class="header">
+
+        <div class="action_box">
+            <a class="normal_link" href="create.php">
+                <span id="action_create">Create article</span>
+            </a>
+        </div>    
+
+
+    </div>
+    
+
     <?php 
 
         while ($values = mysqli_fetch_assoc($result)) {

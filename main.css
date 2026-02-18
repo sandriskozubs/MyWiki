@@ -5,8 +5,12 @@ body {
     flex-direction: column;
 }
 
-h2 {
-    margin-bottom: 20px;
+h1, h2 {
+    margin-bottom: 30px;
+}
+
+.header {
+    width: 100%;
 }
 
 .article_box {
@@ -38,8 +42,22 @@ h2 {
     background-color: rgb(97, 0, 97);
 }
 
-#return_button {
+#action_create {
+    background-color: cyan;
+    color: black;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.4s;
+}
+
+#action_create:hover {
+    background-color: rgb(0, 110, 110);
     color: white;
+}
+
+.normal_link {
+    color: white;
+    font-weight: 600;
     text-decoration: none;
 }
 

@@ -31,7 +31,7 @@
     ?>
 
     <div class="action_box">
-        <a id="return_button" href="select.php">
+        <a class="normal_link" href="select.php">
             <span id="action_return">
                 <- Return
             </span>
