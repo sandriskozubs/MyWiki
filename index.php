@@ -12,7 +12,7 @@
 
 
         if (mysqli_num_rows($result) == 0) {
-            echo "<p id='error'>Incorrect username or password</p>";
+            echo "<p id='error'><b>!!</b> Incorrect username or password</p>";
         }
         else {
             $result_array = mysqli_fetch_assoc($result);
@@ -43,10 +43,10 @@
 
     <form method="POST" action="">
 
-        <div>
-            <input type="text" placeholder="Username..." name="username"><br>
-            <input type="password" placeholder="Password..." name="password"><br>
-            <input type="submit" name="submit" value="Log in">
+        <div class="login_box">
+            <input type="text" id="input_field" placeholder="Username..." name="username">
+            <input type="password" id="input_field" placeholder="Password..." name="password">
+            <input type="submit" id="action_login" name="submit" value="Log in">
         </div>
 
     </form>
