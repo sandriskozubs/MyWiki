@@ -18,7 +18,10 @@
 
         $stmt = $con->prepare("UPDATE articles SET title = ?, content = ?, updated_at = ? WHERE id = " . $articleid);
         $stmt->bind_param("sss", $title, $content, $updated_at);
-        $stmt->execute();
+
+        if (!$stmt->execute()) { 
+            echo "Error: " . $stmt->error; 
+        }
 
         header("Location: article.php?id=" . $articleid);
         exit;

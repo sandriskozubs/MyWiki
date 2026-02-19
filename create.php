@@ -10,7 +10,10 @@
 
         $stmt = $con->prepare("INSERT INTO articles (title, content, created_at) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $title, $content, $created_at);
-        $stmt->execute();
+
+        if (!$stmt->execute()) { 
+            echo "Error: " . $stmt->error; 
+        }
 
         header("Location: select.php");
         exit;
