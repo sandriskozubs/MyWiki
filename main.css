@@ -13,6 +13,11 @@ h1, h2 {
     width: 100%;
 }
 
+.article_container {
+    display: flex;
+    flex-direction: row;
+}
+
 .article_box {
     margin-bottom: 70px;
 }
@@ -28,16 +33,25 @@ h1, h2 {
 
 .action_box {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.action_box2 {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
     justify-content: space-evenly;
 }
 
 #action_return {
     background-color: purple;
+    width: 80px;
     padding: 8px;
     border-radius: 8px;
     transition: background-color 0.4s;
     display: flex;
-    align-items: center;
+    justify-content: center;
 }
 
 #action_return:hover {
@@ -61,6 +75,7 @@ h1, h2 {
     background-color: rgb(0, 255, 0);
     color: black;
     border: none;
+    width: 80px;
     font-size: 16px;
     padding: 10px;
     border-radius: 8px;
@@ -74,14 +89,59 @@ h1, h2 {
     color: white;
 }
 
+#action_delete {
+    background-color: rgb(255, 0, 0);
+    color: black;
+    border: none;
+    display: flex;
+    justify-content: center;
+    width: 80px;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.4s;
+}
+
+#action_delete:hover {
+    cursor: pointer;
+    background-color: rgb(150, 0, 0);
+    color: white;
+}
+
+#action_edit {
+    background-color: rgb(255, 132, 0);
+    color: black;
+    border: none;
+    display: flex;
+    justify-content: center;
+    width: 80px;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.4s;
+}
+
+#action_edit:hover {
+    cursor: pointer;
+    background-color: rgb(163, 79, 0);
+    color: white;
+}
+
 .normal_link {
     color: white;
     font-weight: 600;
     text-decoration: none;
 }
 
+.delete_title {
+    margin-bottom: 40px;
+}
+
 #error {
     color: red;
+    font-size: 20px;
 }
 
 #test {

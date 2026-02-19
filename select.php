@@ -20,7 +20,7 @@
 
     <div class="header">
 
-        <div class="action_box">
+        <div class="action_box2">
             <a class="normal_link" href="create.php">
                 <span id="action_create">Create article</span>
             </a>

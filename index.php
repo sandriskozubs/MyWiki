@@ -6,7 +6,7 @@
         // var_dump($_POST);
         $username = $_POST["username"];
         $password = $_POST["password"];
-        $query = "SELECT admins.username, admins.password FROM admins WHERE admins.username = '" . $username  . "'" . "AND admins.password = '" . $password . "'";
+        $query = "SELECT username, password FROM admins WHERE username = '" . $username  . "'" . "AND password = '" . $password . "'";
 
         $result = mysqli_query($con, $query);
 

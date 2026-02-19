@@ -35,7 +35,7 @@
         <br>
 
 
-        <div class="action_box">
+        <div class="action_box2">
         <input type="submit" id="action_save" name="submit" value="Save">
 
         <a class="normal_link" href="select.php">
