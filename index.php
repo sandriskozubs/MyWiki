@@ -22,8 +22,8 @@
             echo "<p id='test'>Returned value: " . $result_array["password"] . "</p>";
 
             header("Location: select.php");
+            exit;
         }
-
         
         mysqli_close($con);
     }

@@ -11,12 +11,18 @@
     $values = mysqli_fetch_assoc($result);
 
     if (isset($_POST["submit"])) {
-        $query = "UPDATE articles SET title = '" . $_POST["title"] . "', content = '" . $_POST["content"] . "' WHERE id =" . $articleid;
-        mysqli_query($con, $query);
+
+        $title = $_POST["title"]; 
+        $content = $_POST["content"]; 
+        $updated_at = date("Y-m-d");
+
+        $stmt = $con->prepare("UPDATE articles SET title = ?, content = ?, updated_at = ? WHERE id = " . $articleid);
+        $stmt->bind_param("sss", $title, $content, $updated_at);
+        $stmt->execute();
+
         header("Location: article.php?id=" . $articleid);
+        exit;
     }
-
-
 
 ?>
 
@@ -40,8 +46,7 @@
             id="" 
             name="content" 
             placeholder="This article contains..." 
-            rows="4" cols="50">
-        <?php echo $values["content"] ?></textarea><br>
+            rows="4" cols="50"><?php echo $values["content"] ?></textarea><br>
         
         <div class="action_box2">
             <input type="submit" id="action_save" name="submit" value="Save">

@@ -4,15 +4,16 @@
 
     if (isset($_POST["submit"])) {
 
-        $title = $_POST["title"];
-        $content = $_POST["content"];
+        $title = $_POST["title"]; 
+        $content = $_POST["content"]; 
+        $created_at = date("Y-m-d");
 
-        $query = "INSERT INTO articles (title, content, created_at) 
-        VALUES ('" . $_POST["title"] . "', '" . $_POST["content"] . "', '" . date("Y-m-d") . "');";
-
-        mysqli_query($con, $query);
+        $stmt = $con->prepare("INSERT INTO articles (title, content, created_at) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $title, $content, $created_at);
+        $stmt->execute();
 
         header("Location: select.php");
+        exit;
     }
 
 ?>
@@ -33,7 +34,6 @@
         <input type="text" name="title" placeholder="Title..."><br>
         <textarea id="article_content" name="content" rows="4" cols="50"></textarea>
         <br>
-
 
         <div class="action_box2">
         <input type="submit" id="action_save" name="submit" value="Save">

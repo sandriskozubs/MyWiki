@@ -14,9 +14,8 @@
         $query = "DELETE FROM articles WHERE id = " . $articleid;
         mysqli_query($con, $query);
         header("Location: select.php");
+        exit;
     }
-
-
 
 ?>
 
