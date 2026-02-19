@@ -42,25 +42,26 @@
     <h1>Editing an article</h1>
 
     <form method="POST" action="">
-    
-        <input type="text" name="title" placeholder="Title..." value="<?php echo $values["title"] ?>"><br>
-        
-        <textarea 
-            id="" 
-            name="content" 
-            placeholder="This article contains..." 
-            rows="4" cols="50"><?php echo $values["content"] ?></textarea><br>
-        
-        <div class="action_box2">
-            <input type="submit" id="action_save" name="submit" value="Save">
+        <div class="fields_box">
+            <input type="text" id="input_field" name="title" placeholder="Title..." value="<?php echo $values["title"] ?>">
+            
+            <textarea 
+                id="input_content" 
+                name="content" 
+                placeholder="This article contains..." 
+                rows="4" cols="50"><?php echo $values["content"] ?></textarea>
+            
+            <div class="action_box2">
+                <input type="submit" id="action_save" name="submit" value="Save">
 
-            <a class="normal_link" href="article.php?id=<?php echo $articleid; ?>">
-                <span id="action_return">
-                    <- Return
-                </span>
-            </a>
+                <a class="normal_link" href="article.php?id=<?php echo $articleid; ?>">
+                    <span id="action_return">
+                        <- Return
+                    </span>
+                </a>
+            </div>
         </div>
-
     </form>
+
 </body>
 </html>

@@ -34,18 +34,20 @@
     <h1>Creating an article</h1>
 
     <form method="POST">
-        <input type="text" name="title" placeholder="Title..."><br>
-        <textarea id="article_content" name="content" rows="4" cols="50"></textarea>
-        <br>
+        <div class="fields_box">
+            <input type="text" id="input_field" name="title" placeholder="Title...">
 
-        <div class="action_box2">
-        <input type="submit" id="action_save" name="submit" value="Save">
+            <textarea id="input_content" placeholder="This article is about..." name="content" rows="4" cols="50"></textarea>
 
-        <a class="normal_link" href="select.php">
-            <span id="action_return">
-                <- Return
-            </span>
-        </a>
+            <div class="action_box2">
+                <input type="submit" id="action_save" name="submit" value="Save">
+
+                <a class="normal_link" href="select.php">
+                    <span id="action_return">
+                        <- Return
+                    </span>
+                </a>
+            </div>
         </div>
     </form>
 
