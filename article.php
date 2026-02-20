@@ -38,7 +38,7 @@
                     echo "<div class='article_text article_margin_left'>" . nl2br(htmlspecialchars($article["content"])) . "</div>";
                 echo "</div>";
             }
-            
+
         ?>
 
         <div class="action_box">

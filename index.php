@@ -43,14 +43,20 @@
 </head>
 <body>
 
-    <h1>Your own Wiki</h1>
+    <div class="login_header">
+        <h1>MyWiki</h1>
+    </div>
+
+    <div class="login_info">
+        <span>Login to use MyWiki</span>
+    </div>
 
     <form method="POST" action="">
 
         <div class="login_box">
             <input required type="text" id="input_field" placeholder="Username..." name="username">
             <input required type="password" id="input_field" placeholder="Password..." name="password">
-            <input type="submit" id="action_login" name="submit" value="Log in">
+            <input type="submit" id="action_login" name="submit" value="Login">
         </div>
 
     </form>

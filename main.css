@@ -3,6 +3,37 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin: 0;
+}
+
+.login_header {
+    background-color: #B39EB5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.login_header h1 {
+    margin: 8px;
+    font-style: italic;
+    color: rgb(63, 58, 52);
+}
+
+.login_info {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.login_info span {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.header {
+    width: 100%;
 }
 
 h1 {
@@ -26,10 +57,6 @@ a:hover {
 .normal_link {
     font-weight: 600;
     text-decoration: none;
-}
-
-.header {
-    width: 100%;
 }
 
 .login_box {
@@ -113,7 +140,7 @@ a:hover {
     background-color: #B39EB5;
     width: 60px;
     padding: 6px;
-    border: 2px solid #352154;
+    border: none;
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s, box-shadow 0.2s;
     display: flex;
