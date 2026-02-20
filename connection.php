@@ -1,13 +1,13 @@
-<?php
+    <?php
 
-    $host = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "my_wiki1";
-    
-    $con = mysqli_connect($host, $username, $password, $dbname);
+        const HOST = "localhost";
+        const USERNAME = "root";
+        const PASSWORD = "";
+        const DB_NAME= "my_wiki1";
+        
+        $con = mysqli_connect(HOST, USERNAME, PASSWORD, DB_NAME);
 
-    if (mysqli_connect_errno()) {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        exit();
-    }
+        if (mysqli_connect_errno()) {
+            echo "Failed to connect to MySQL: " . mysqli_connect_error();
+            exit();
+        }
