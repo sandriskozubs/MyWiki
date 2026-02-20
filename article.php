@@ -5,13 +5,15 @@
     $articleid = $_GET["id"]; 
     // echo $articleid;
 
-    $query = "SELECT * FROM articles WHERE id = " . $articleid;
+    $stmt = $con->prepare("SELECT * FROM articles WHERE id = ?");
+    $stmt->bind_param("i", $articleid);
 
-    $result = mysqli_query($con, $query);
+    $stmt->execute();
 
-    $values = mysqli_fetch_assoc($result);
+    $result = $stmt->get_result();
 
-    
+    $article = $result->fetch_assoc();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,19 +21,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <title><?php echo $values["title"]; ?></title>
+    <title><?= htmlspecialchars($article["title"]); ?></title>
 </head>
 <body>
-    
+
     <div class="article_container">
 
         <?php 
-            
-                echo "<div class='article_box'>";
-                    echo "<h2>" . $values["title"] . "</h2>";
-                    echo "<div class='article_text article_margin_left'>" . $values["content"] . "</div>";
-                echo "</div>";
 
+            if (!$article) {
+                echo "Article not found!";
+            }
+            else {
+                echo "<div class='article_box'>";
+                    echo "<h2>" . htmlspecialchars($article["title"]) . "</h2>";
+                    echo "<div class='article_text article_margin_left'>" . nl2br(htmlspecialchars($article["content"])) . "</div>";
+                echo "</div>";
+            }
+            
         ?>
 
         <div class="action_box">
@@ -41,13 +48,13 @@
                 </span>
             </a>
 
-            <a class="normal_link" href="edit.php?id=<?php echo $articleid; ?>">
+            <a class="normal_link" href="edit.php?id=<?= $articleid; ?>">
                 <span id="action_edit">
                     Edit
                 </span>
             </a>
 
-            <a class="normal_link" href="delete.php?id=<?php echo $articleid; ?>">
+            <a class="normal_link" href="delete.php?id=<?= $articleid; ?>">
                 <span id="action_delete">
                     Delete
                 </span>
