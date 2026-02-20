@@ -20,7 +20,7 @@
         else {
             $row = $result->fetch_assoc();
 
-            if (password_verify($password, $row["password"])) {
+            if (password_verify($password, $row["password"]) && $row["username"] == $username) {
                 header("Location: select.php");
                 exit;
             }
