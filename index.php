@@ -2,27 +2,31 @@
 
     require("connection.php");
 
-    if(isset($_POST["submit"])) {
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // var_dump($_POST);
+        
         $username = $_POST["username"];
         $password = $_POST["password"];
-        $query = "SELECT username, password FROM admins WHERE username = '" . $username  . "'" . "AND password = '" . $password . "'";
 
-        $result = mysqli_query($con, $query);
+        $stmt = $con->prepare("SELECT username, password FROM admins WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
 
+        $result = $stmt->get_result();
 
-        if (mysqli_num_rows($result) == 0) {
+        if ($result->num_rows == 0) {
             echo "<p id='error'><b>!!</b> Incorrect username or password</p>";
         }
         else {
-            $result_array = mysqli_fetch_assoc($result);
+            $row = $result->fetch_assoc();
 
-            echo "<p id='test'>Matched rows: " . mysqli_num_rows($result) . "</p>";
-            echo "<p id='test'>Returned value: " . $result_array["username"] . "</p>";
-            echo "<p id='test'>Returned value: " . $result_array["password"] . "</p>";
-
-            header("Location: select.php");
-            exit;
+            if (password_verify($password, $row["password"])) {
+                header("Location: select.php");
+                exit;
+            }
+            else {
+                echo "<p id='error'><b>!!</b> Incorrect username or password</p>";
+            }
         }
         
         mysqli_close($con);
@@ -44,8 +48,8 @@
     <form method="POST" action="">
 
         <div class="login_box">
-            <input type="text" id="input_field" placeholder="Username..." name="username">
-            <input type="password" id="input_field" placeholder="Password..." name="password">
+            <input required type="text" id="input_field" placeholder="Username..." name="username">
+            <input required type="password" id="input_field" placeholder="Password..." name="password">
             <input type="submit" id="action_login" name="submit" value="Log in">
         </div>
 
