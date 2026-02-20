@@ -4,11 +4,13 @@
 
     $articleid = $_GET["id"];
 
-    $query = "SELECT title, content FROM articles WHERE id = " . $articleid;
+    $stmt = $con->prepare("SELECT title, content FROM articles WHERE id = ?");
 
-    $result = mysqli_query($con, $query);
+    $stmt->bind_param("i", $articleid);
+    $stmt->execute();
 
-    $values = mysqli_fetch_assoc($result);
+    $result = $stmt->get_result();
+    $article = $result->fetch_assoc();
 
     if (isset($_POST["submit"])) {
 
@@ -16,8 +18,8 @@
         $content = $_POST["content"]; 
         $updated_at = date("Y-m-d");
 
-        $stmt = $con->prepare("UPDATE articles SET title = ?, content = ?, updated_at = ? WHERE id = " . $articleid);
-        $stmt->bind_param("sss", $title, $content, $updated_at);
+        $stmt = $con->prepare("UPDATE articles SET title = ?, content = ?, updated_at = ? WHERE id = ?");
+        $stmt->bind_param("sssi", $title, $content, $updated_at, $articleid);
 
         if (!$stmt->execute()) { 
             echo "Error: " . $stmt->error; 
@@ -40,16 +42,25 @@
 <body>
     
     <h1>Editing an article</h1>
+    
+    <?php
+        
+        if (!$article) { 
+            echo "Article not found!"; 
+            exit; 
+        }
+
+    ?>
 
     <form method="POST" action="">
         <div class="fields_box">
-            <input type="text" id="input_field" name="title" placeholder="Title..." value="<?php echo $values["title"] ?>">
+            <input type="text" id="input_field" name="title" placeholder="Title..." value="<?= htmlspecialchars($article["title"]) ?>">
             
             <textarea 
                 id="input_content" 
                 name="content" 
                 placeholder="This article contains..." 
-                rows="4" cols="50"><?php echo $values["content"] ?></textarea>
+                rows="4" cols="50"><?= htmlspecialchars($article["content"]) ?></textarea>
             
             <div class="action_box2">
                 <input type="submit" id="action_save" name="submit" value="Save">

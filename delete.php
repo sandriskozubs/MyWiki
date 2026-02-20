@@ -4,15 +4,26 @@
 
     $articleid = $_GET["id"];
 
-    $query = "SELECT title, content FROM articles WHERE id = " . $articleid;
+    $stmt = $con->prepare("SELECT title, content FROM articles WHERE id = ?");
 
-    $result = mysqli_query($con, $query);
+    $stmt->bind_param("i", $articleid);
+    $stmt->execute();
 
-    $values = mysqli_fetch_assoc($result);
+    $result = $stmt->get_result();
+    $article = $result->fetch_assoc();
+
+    if (!$article) { 
+        echo "<p>Article not found.</p>"; 
+        exit;
+    }
 
     if (isset($_POST["submit"])) {
-        $query = "DELETE FROM articles WHERE id = " . $articleid;
-        mysqli_query($con, $query);
+        
+        $stmt = $con->prepare("DELETE FROM articles WHERE id = ?");
+        $stmt->bind_param("i", $articleid);
+        
+        $stmt->execute();
+
         header("Location: select.php");
         exit;
     }
@@ -31,15 +42,17 @@
     
     <h1>Deleting an article</h1>
 
+
+
     <p id="error">Do you really want to delete this article:</p>
-    <span class="delete_title" id="error">'<b><?php echo $values["title"]; ?></b>' ?</span>
+    <span class="delete_title" id="error">'<b><?=  htmlspecialchars($article["title"]); ?></b>' ?</span>
 
     <form method="POST" action="">
         
         <div class="action_box2">
             <input type="submit" id="action_delete" name="submit" value="Delete">
 
-            <a class="normal_link" href="article.php?id=<?php echo $articleid; ?>">
+            <a class="normal_link" href="article.php?id=<?=  htmlspecialchars($articleid); ?>">
                 <span id="action_return">
                     <- Return
                 </span>
