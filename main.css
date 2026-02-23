@@ -6,6 +6,11 @@ body {
     margin: 0;
 }
 
+hr {
+    border: 2px solid rgb(52, 52, 52);
+    border-radius: 8px;
+}
+
 .login_header {
     background-color: #B39EB5;
     display: flex;
@@ -32,12 +37,46 @@ body {
     font-size: 1.2rem;
 }
 
+.search_field {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search_field input {
+    width: 12rem;
+}
+
 .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
 }
 
+.results_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 0.25rem;
+}
+
+.results_box a {
+    text-decoration: none;
+    color: gray;
+    font-size: 1.2rem;
+    transition: color 0.3s, font-size 0.5s;
+}
+
+.results_box a:hover {
+    color: #2b2a2c;
+    font-size: 1.5rem;
+}
+
 h1 {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 h2 {
@@ -116,16 +155,17 @@ a:hover {
 .action_box {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    justify-content: start;
+    gap: 1.5rem;
+    justify-content: center;
 }
 
 .action_box2 {
     display: flex;
     flex-direction: row;
+    align-content: center;
     gap: 50px;
     justify-content: space-evenly;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .fields_box {
