@@ -59,8 +59,8 @@
                 id="input_content" 
                 placeholder="This article is about..." 
                 name="content" 
-                rows="4" 
-                cols="50" 
+                rows="6" 
+                cols="80" 
             ><?= htmlspecialchars($content ?? '') ?></textarea>
 
             <div class="action_box2">

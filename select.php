@@ -9,15 +9,16 @@
 
     $search_result = "";
 
-    if (isset($_GET["search"])) {
-        $keyword = "%" . $_GET["search"] . "%";
-        $stmt = $con->prepare("SELECT * FROM articles WHERE content LIKE ?");
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $keyword = "%" . $_POST["search_field"] . "%";
+            $stmt = $con->prepare("SELECT * FROM articles WHERE content LIKE ?");
 
-        $stmt->bind_param("s", $keyword);
-        $stmt->execute();
+            $stmt->bind_param("s", $keyword);
+            $stmt->execute();
 
-        $search_result = $stmt->get_result();
-    }
+            $search_result = $stmt->get_result();
+        }
+
 
 ?>
 <!DOCTYPE html>
@@ -30,17 +31,20 @@
 </head>
 <body>
 
-    <h1>What are you looking for?</h1>
+        <span class="header">
+            <h1>What are you looking for?</h1>
+        </span>
 
-    <div class="search_field">
-        <form method="GET" action="select.php">
-            <input type="text" id="input_field" name="search" placeholder="A article about..."> 
+        <form method="POST" action="select.php">
+            <div class="search_field">
+                <input type="text" id="input_field" name="search_field" placeholder="A article about..."> 
+                <input type="submit" id="search_button" name="submit" value="&#8594;">
+            </div>
         </form>
-    </div>
 
     <br>
 
-    <div class="header">
+    <div class="action_line">
         <div class="action_box2">
             <a class="normal_link" href="create.php">
                 <span id="action_create">Create article</span>
@@ -50,18 +54,21 @@
 
     <div class="results_box">
         <?php
-        
             if ($search_result) {   
                 if ($search_result->num_rows > 0) {
                     echo "Search results:";
                     while ($found_result = $search_result->fetch_assoc()) {
         ?>
-                        <a href="article.php?id=<?php echo htmlspecialchars($found_result["id"]); ?>"><?= htmlspecialchars($found_result["title"]) ?></a>
-                        <hr>
+                        <a href="article.php?id=<?php echo htmlspecialchars($found_result["id"]); ?>">
+                            <?= htmlspecialchars($found_result["title"]) ?>
+                        </a>
         <?php
                     }
                 }
-            };
+                else {
+                    echo "No articles found";
+                }
+            }
         ?>
     </div>
 
@@ -74,6 +81,7 @@
     ?>
     
     <div class="article_box">
+        <hr>
         <?php
             while ($row = $result->fetch_assoc()) {
                 echo "<div class='article_box'>";

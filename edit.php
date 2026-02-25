@@ -40,7 +40,6 @@
     <title>Editing</title>
 </head>
 <body>
-    
     <h1>Editing an article</h1>
     
     <?php
@@ -60,7 +59,7 @@
                 id="input_content" 
                 name="content" 
                 placeholder="This article contains..." 
-                rows="4" cols="50"><?= htmlspecialchars($article["content"]) ?></textarea>
+                rows="6" cols="80"><?= htmlspecialchars($article["content"]) ?></textarea>
             
             <div class="action_box2">
                 <input type="submit" id="action_save" name="submit" value="Save">
@@ -73,6 +72,5 @@
             </div>
         </div>
     </form>
-
 </body>
 </html>
