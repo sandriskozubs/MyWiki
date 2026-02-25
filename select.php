@@ -89,10 +89,10 @@
                     $full_content = $row["content"];
                     if (mb_strlen($full_content) > 200) { // Checks if the full text is bigger thatn 200 characters
                         $preview_content = mb_substr($row["content"], 0, 250) . "..."; // Creates the preview text
-                        echo "<div class='article_text article_margin_left'>" . nl2br(htmlspecialchars($preview_content)) . "</div>";
+                        echo "<div class='article_content'>" . nl2br(htmlspecialchars($preview_content)) . "</div>";
                     }
                     else {
-                        echo "<div class='article_text article_margin_left'>" . htmlspecialchars($full_content) . "</div>";
+                        echo "<div class='article_content'>" . htmlspecialchars($full_content) . "</div>";
                     }
                     
                 echo "</div>";

@@ -164,6 +164,7 @@ a:hover {
 
 .article_container {
     display: flex;
+    gap: 2rem;
     flex-direction: row;
 }
 
@@ -171,13 +172,22 @@ a:hover {
     margin-bottom: 5rem;
 }
 
-.article_text {
+.article_box h2 {
+    margin-bottom: 0.5rem;
+}
+
+.article_box .article_info {
+    color: gray;
+    font-style: italic;
+}
+
+.article_content {
     font-size: 1.3rem;
     max-width: 900px;
 }
 
-.article_margin_left {
-    margin-left: 10px;
+.article_info {
+    margin-bottom: 2rem;
 }
 
 .action_box {
