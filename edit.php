@@ -30,7 +30,6 @@
     }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,12 +53,20 @@
     <form method="POST" action="">
         <div class="fields_box">
             <input type="text" id="input_field" name="title" placeholder="Title..." value="<?= htmlspecialchars($article["title"]) ?>">
-            
+
+            <div>
+                <a class="normal_link" href=<?="upload.php?id=" . htmlspecialchars($articleid) ?>>
+                    <span id="action_upload">
+                        Upload an image
+                    </span>
+                </a>
+            </div>
+
             <textarea 
                 id="input_content" 
                 name="content" 
                 placeholder="This article contains..." 
-                rows="6" cols="80"><?= htmlspecialchars($article["content"]) ?></textarea>
+                rows="6" cols="100"><?= htmlspecialchars($article["content"]) ?></textarea>
             
             <div class="action_box2">
                 <input type="submit" id="action_save" name="submit" value="Save">

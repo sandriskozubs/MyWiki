@@ -60,7 +60,7 @@
                 placeholder="This article is about..." 
                 name="content" 
                 rows="6" 
-                cols="80" 
+                cols="100" 
             ><?= htmlspecialchars($content ?? '') ?></textarea>
 
             <div class="action_box2">

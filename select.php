@@ -19,7 +19,6 @@
             $search_result = $stmt->get_result();
         }
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,9 +30,9 @@
 </head>
 <body>
 
-        <span class="header">
+        <div class="header">
             <h1>What are you looking for?</h1>
-        </span>
+        </div>
 
         <form method="POST" action="select.php">
             <div class="search_field">
@@ -85,9 +84,9 @@
         <?php
             while ($row = $result->fetch_assoc()) {
                 echo "<div class='article_box'>";
-                    echo "<h2><a href='article.php?id=" . $row["id"] . "'>" . htmlspecialchars($row["title"]) . "</a></h2>";
+                    echo "<h2><a href='article.php?id=" . htmlspecialchars($row["id"]) . "'>" . htmlspecialchars($row["title"]) . "</a></h2>";
                     $full_content = $row["content"];
-                    if (mb_strlen($full_content) > 200) { // Checks if the full text is bigger thatn 200 characters
+                    if (mb_strlen($full_content) > 250) { // Checks if the full text is bigger than 250 characters
                         $preview_content = mb_substr($row["content"], 0, 250) . "..."; // Creates the preview text
                         echo "<div class='article_content'>" . nl2br(htmlspecialchars($preview_content)) . "</div>";
                     }
