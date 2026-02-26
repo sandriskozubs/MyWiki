@@ -36,7 +36,7 @@ If an article is edited and the changes are saved, then the article will also ha
 
 2.  Clone this repository by typing this in the terminal:
     `git clone https://github.com/sandriskozubs/MyWiki.git`
-<br>
+    <br>
 3. Then create a database and the necessary tables.
 4. Change the constant values in `connection.php` file.
 
@@ -45,5 +45,5 @@ If an article is edited and the changes are saved, then the article will also ha
         const USERNAME = "root"; // Your database username
         const PASSWORD = ""; // Your database password
         const DB_NAME= "my_wiki1"; // The database name
-<br>
+    <br>
 5. And thats it!
