@@ -98,6 +98,7 @@
             }
             
         ?>
+        <hr>
     </div>
 </body>
 </html>

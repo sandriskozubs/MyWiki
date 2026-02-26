@@ -39,13 +39,19 @@
     <title>Editing</title>
 </head>
 <body>
+    <div>
+        <h1>Deleting an article</h1>
+    </div>
+
+    <p id="error">
+        Do you really want to delete this article:
+    </p>
     
-    <h1>Deleting an article</h1>
-
-
-
-    <p id="error">Do you really want to delete this article:</p>
-    <span class="delete_title" id="error">'<b><?=  htmlspecialchars($article["title"]); ?></b>' ?</span>
+    <span class="delete_title" id="error">
+        '<b>
+            <?=  htmlspecialchars($article["title"]); ?>
+        </b>' ?
+    </span>
 
     <form method="POST" action="">
         

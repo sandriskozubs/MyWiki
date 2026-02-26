@@ -32,18 +32,18 @@
                     header("Location: edit.php?id=" . $articleid);
                 }
                 else {
-                    echo "Your file size is too big!";
+                    echo "<span id='error'>Your file size is too big!</span>";
                 }
             }
             else {
-                echo "There was an error uploading this file!";
+                echo "<span id='error'>There was an error uploading this file!</span>";
             }
         }
         else {
-            echo "You cannot upload this type of file!";
+            echo "<span id='error'>You cannot upload this type of file!</span>";
         }   
-
     }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,12 +51,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <title>Upload</title>
+    <title>
+        Upload
+    </title>
 </head>
 <body>
-    <form action="upload.php?id=<?= htmlspecialchars($articleid) ?>" method="POST" enctype="multipart/form-data">
-        <input type="file" name="image">
-        <button type="submit" name="submit">Upload</button>
+    <form class="upload_form" action="upload.php?id=<?= htmlspecialchars($articleid) ?>" method="POST" enctype="multipart/form-data">
+        <div class="header">
+            <h1>
+                Uploading a file
+            </h1>
+        </div>
+        <input id="input_image" type="file" name="image">
+
+        <div class="action_box2">
+            <button type="submit" id="action_upload" name="submit">
+                Upload
+            </button>
+
+            <a class="normal_link" href="select.php">
+                <span id="action_return">
+                    <- Return
+                </span>
+            </a>
+        </div>
     </form>
 </body>
 </html>
