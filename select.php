@@ -10,13 +10,20 @@
     $search_result = "";
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $keyword = "%" . $_POST["search_field"] . "%";
-            $stmt = $con->prepare("SELECT * FROM articles WHERE content LIKE ?");
+            $keyword = trim($_POST["search_field"]);
 
-            $stmt->bind_param("s", $keyword);
-            $stmt->execute();
+            if ($keyword === "") {
+                $search_result = "";
+            }
+            else {
+                $keyword = "%" . $keyword . "%";
 
-            $search_result = $stmt->get_result();
+                $stmt = $con->prepare("SELECT * FROM articles WHERE content LIKE ?");
+                $stmt->bind_param("s", $keyword);
+
+                $stmt->execute();
+                $search_result = $stmt->get_result();
+            }
         }
 
 ?>
@@ -91,7 +98,7 @@
                         echo "<div class='article_content'>" . nl2br(htmlspecialchars($preview_content)) . "</div>";
                     }
                     else {
-                        echo "<div class='article_content'>" . htmlspecialchars($full_content) . "</div>";
+                        echo "<div class='article_content'>" . nl2br(htmlspecialchars($full_content)) . "</div>";
                     }
                     
                 echo "</div>";

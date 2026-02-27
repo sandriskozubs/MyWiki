@@ -18,11 +18,11 @@
             $stmt->bind_param("sss", $title, $content, $created_at);
 
             if (!$stmt->execute()) { 
-                echo "Error: " . $stmt->error; 
+                $error = "Error: " . $stmt->error;
+            } else {
+                header("Location: select.php");
+                exit;
             }
-
-            header("Location: select.php");
-            exit;
         }
     }
 
@@ -46,7 +46,7 @@
     ?>
 
     <form method="POST">
-        <div class="fields_box">
+        <div class="fields_box2">
             <input 
                 type="text" 
                 id="input_field" 
@@ -73,7 +73,7 @@
 
                 <a class="normal_link" href="select.php">
                     <span id="action_return">
-                        <- Return
+                        &larr; Return
                     </span>
                 </a>
             </div>

@@ -96,7 +96,7 @@
         <div class="action_box">
             <a class="normal_link" href="select.php">
                 <span id="action_return">
-                    <- Return
+                    &larr; Return
                 </span>
             </a>
 
