@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     require("connection.php");
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -23,7 +25,8 @@
             }
             else {
                 $row = $result->fetch_assoc();
-                if (password_verify($password, $row["password"]) && $row["username"] == $username) {
+                if (password_verify($password, $row["password"])) {
+                    $_SESSION["admin"] = $row["username"];
                     header("Location: select.php");
                     exit;
                 }
@@ -31,7 +34,6 @@
                     echo "<p id='error'><b>!!</b> Incorrect username or password</p>";
                 }
             }
-            mysqli_close($con);
         }
     }
 
@@ -55,8 +57,8 @@
 
     <form method="POST" action="">
         <div class="login_box">
-            <input required type="text" id="input_field" placeholder="Username..." name="username">
-            <input required type="password" id="input_field" placeholder="Password..." name="password">
+            <input required type="text" class="input_field" placeholder="Username..." name="username">
+            <input required type="password" class="input_field" placeholder="Password..." name="password">
             <input type="submit" id="action_login" name="submit" value="Login">
         </div>
     </form>

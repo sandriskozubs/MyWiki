@@ -1,6 +1,9 @@
 <?php
 
+    session_start();
+
     require("connection.php");
+    require("auth.php");
 
     $articleid = isset($_GET["id"]) ? (int)$_GET["id"] : 0;
 
@@ -66,7 +69,7 @@
         <div class="fields_box">
 
         <div class="edit_text_container">
-            <input type="text" id="input_field" name="title" placeholder="Title..." value="<?= htmlspecialchars($article["title"]) ?>">
+            <input type="text" class="input_field" name="title" placeholder="Title..." value="<?= htmlspecialchars($article["title"]) ?>">
 
             <a class="normal_link" href="<?= "upload.php?id=" . htmlspecialchars($articleid) ?>">
                 <span id="action_upload">Upload an image</span>

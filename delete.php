@@ -1,6 +1,9 @@
 <?php
 
+    session_start();
+
     require("connection.php");
+    require("auth.php");
 
     $articleid = $_GET["id"];
 

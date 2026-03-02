@@ -1,8 +1,11 @@
 <?php
 
-    $error = "";
+    session_start();
 
     require("connection.php");
+    require("auth.php");
+
+    $error = "";
 
     if (isset($_POST["submit"])) {
 
@@ -49,7 +52,7 @@
         <div class="fields_box2">
             <input 
                 type="text" 
-                id="input_field" 
+                class="input_field" 
                 name="title" 
                 placeholder="Title..." 
                 value="<?= htmlspecialchars($title ?? '') ?>"

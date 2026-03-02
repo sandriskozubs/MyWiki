@@ -1,16 +1,19 @@
 <?php
+    
+    session_start();
 
     require("connection.php");
+    require("auth.php");
 
-    $stmt = $con->prepare("SELECT * FROM articles LIMIT 5");
+    $stmt = $con->prepare("SELECT id, title, content FROM articles LIMIT 5");
 
     $stmt->execute();
     $result = $stmt->get_result();
 
     $search_result = "";
 
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $keyword = trim($_POST["search_field"]);
+        if (isset($_GET["search_field"])) {
+            $keyword = trim($_GET["search_field"]);
 
             if ($keyword === "") {
                 $search_result = "";
@@ -18,7 +21,7 @@
             else {
                 $keyword = "%" . $keyword . "%";
 
-                $stmt = $con->prepare("SELECT * FROM articles WHERE content LIKE ?");
+                $stmt = $con->prepare("SELECT id, title FROM articles WHERE content LIKE ?");
                 $stmt->bind_param("s", $keyword);
 
                 $stmt->execute();
@@ -37,30 +40,32 @@
 </head>
 <body>
 
+        <div id="logout">
+            <a class="normal_link" href="logout.php">
+                <span id="action_logout">Logout</span>
+            </a>
+        </div>
+
         <div class="header">
             <h1>What are you looking for?</h1>
         </div>
 
-        <form method="POST" action="select.php">
+        <form method="GET" action="select.php">
             <div class="search_field">
-                <input type="text" id="input_field" name="search_field" placeholder="A article about..."> 
-                <input type="submit" id="search_button" name="submit" value="&#8594;">
+                <input type="text" class="input_field" name="search_field" placeholder="An article about..."> 
+                <input type="submit" id="search_button" value="&#8594;">
             </div>
         </form>
 
-    <br>
-
     <div class="action_line">
-        <div class="action_box2">
-            <a class="normal_link" href="create.php">
-                <span id="action_create">Create article</span>
-            </a>
-        </div>    
+        <a class="normal_link" href="create.php">
+            <span id="action_create">Create article</span>
+        </a>  
     </div>
 
     <div class="results_box">
         <?php
-            if ($search_result) {   
+            if ($search_result) {
                 if ($search_result->num_rows > 0) {
                     echo "Search results:";
                     while ($found_result = $search_result->fetch_assoc()) {
