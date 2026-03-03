@@ -9,18 +9,18 @@
 
     if (isset($_POST["submit"])) {
 
-        $title = $_POST["title"]; 
-        $content = $_POST["content"]; 
+        $title = trim($_POST["title"]); 
+        $content = trim($_POST["content"]); 
         $created_at = date("Y-m-d");
 
-        if (trim($title) === "" || trim($content) === "") { 
-            $error = "!! Title and content cannot be empty"; 
+        if ($title === "" || $content === "") { 
+            $error .= "<p class='error'><b>!!</b> Title and content cannot be empty</p>"; 
         }
         else {
             $stmt = $con->prepare("INSERT INTO articles (title, content, created_at) VALUES (?, ?, ?)");
             $stmt->bind_param("sss", $title, $content, $created_at);
 
-            if (!$stmt->execute()) { 
+            if (!$stmt->execute()) {
                 $error = "Error: " . $stmt->error;
             } else {
                 header("Location: select.php");
@@ -44,13 +44,14 @@
 
     <?php
         if (!empty($error)) {
-            echo "<p id='error'>$error</p>";
+            echo $error;
         }
     ?>
 
     <form method="POST">
         <div class="fields_box2">
             <input 
+                required
                 type="text" 
                 class="input_field" 
                 name="title" 
@@ -58,7 +59,8 @@
                 value="<?= htmlspecialchars($title ?? '') ?>"
             >
 
-            <textarea 
+            <textarea
+                required 
                 id="input_content" 
                 placeholder="This article is about..." 
                 name="content" 
