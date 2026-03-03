@@ -28,7 +28,7 @@
                 $row = $result->fetch_assoc();
                 if (password_verify($password, $row["password"]) && $row["username"] == $username) {
                     $_SESSION["admin"] = $row["username"];
-                    header("Location: select.php");
+                    header("Location: select.php?page=1");
                     exit;
                 }
                 else {
