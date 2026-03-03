@@ -1,6 +1,8 @@
 <?php
 
     session_start();
+    
+    $error = "";
 
     require("connection.php");
 
@@ -10,8 +12,7 @@
         $password = $_POST["password"];
 
         if (empty($username) || empty($password)) {
-            echo "<p id='error'><b>!!</b> Dont leave the fields empty!</p>";
-            mysqli_close($con);
+            $error .= "<p id='error'><b>!!</b> Dont leave any fields empty!</p>";
         }
         else {
             $stmt = $con->prepare("SELECT username, password FROM admins WHERE username = ?");
@@ -21,17 +22,17 @@
             $result = $stmt->get_result();
 
             if ($result->num_rows == 0) {
-                echo "<p id='error'><b>!!</b> Incorrect username or password</p>";
+                $error .= "<p id='error'><b>!!</b> Incorrect username or password</p>";
             }
             else {
                 $row = $result->fetch_assoc();
-                if (password_verify($password, $row["password"])) {
+                if (password_verify($password, $row["password"]) && $row["username"] == $username) {
                     $_SESSION["admin"] = $row["username"];
                     header("Location: select.php");
                     exit;
                 }
                 else {
-                    echo "<p id='error'><b>!!</b> Incorrect username or password</p>";
+                    $error .= "<p id='error'><b>!!</b> Incorrect username or password</p>";
                 }
             }
         }
@@ -50,6 +51,8 @@
     <div class="login_header">
         <h1>MyWiki</h1>
     </div>
+
+    <?= $error ?>
 
     <div class="login_info">
         <span>Login to use MyWiki</span>
