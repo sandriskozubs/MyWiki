@@ -2,13 +2,19 @@
 
     session_start();
 
+    $error = "";
+
     require("connection.php");
     require("auth.php");
 
-    $articleid = $_GET["id"];
+    $articleid = isset($_GET["id"]) ? (int)$_GET["id"] : 0;
+
+    if ($articleid <= 0) {
+        echo "Invalid article ID.";
+        exit;
+    }
 
     if (isset($_POST["submit"])) {
-        $file = $_FILES['image'];
 
         $fileName = $_FILES["image"]["name"];
         $fileTmpName = $_FILES["image"]["tmp_name"];
@@ -33,17 +39,18 @@
                     $stmt->execute();
 
                     header("Location: edit.php?id=" . $articleid);
+                    exit;
                 }
                 else {
-                    echo "<span id='error'>Your file size is too big!</span>";
+                    $error .= "<span id='error'>Your file size is too big!</span>";
                 }
             }
             else {
-                echo "<span id='error'>There was an error uploading this file!</span>";
+                $error .= "<span id='error'>There was an error uploading this file!</span>";
             }
         }
         else {
-            echo "<span id='error'>You cannot upload this type of file!</span>";
+            $error .= "<span id='error'>You cannot upload this type of file!</span>";
         }   
     }
 
@@ -54,9 +61,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <title>
-        Upload
-    </title>
+    <title>Upload</title>
 </head>
 <body>
     <form class="upload_form" action="upload.php?id=<?= htmlspecialchars($articleid) ?>" method="POST" enctype="multipart/form-data">
@@ -65,6 +70,9 @@
                 Uploading a file
             </h1>
         </div>
+
+        <?= $error ?>
+
         <input id="input_image" type="file" name="image">
 
         <div class="action_box2">

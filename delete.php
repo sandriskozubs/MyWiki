@@ -5,7 +5,12 @@
     require("connection.php");
     require("auth.php");
 
-    $articleid = $_GET["id"];
+    $articleid = isset($_GET["id"]) ? (int) $_GET["id"] : 0;
+
+    if ($articleid <= 0) {
+        echo "Invalid article ID.";
+        exit;
+    }
 
     $stmt = $con->prepare("SELECT title, content FROM articles WHERE id = ?");
 
