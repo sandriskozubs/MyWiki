@@ -2,6 +2,8 @@
 
     session_start();
 
+    $error = "";
+
     require("connection.php");
     require("auth.php");
 
@@ -25,23 +27,24 @@
     }
 
     if (isset($_POST["submit"])) {
-        $title = $_POST["title"]; 
-        $content = $_POST["content"]; 
+        $title = trim($_POST["title"]); 
+        $content = trim($_POST["content"]); 
         $updated_at = date("Y-m-d");
 
         if (empty($title) || empty($content)) {
-            die("Title and content cannot be empty.");
-        }
-
-        $stmt = $con->prepare("UPDATE articles SET title = ?, content = ?, updated_at = ? WHERE id = ?");
-        $stmt->bind_param("sssi", $title, $content, $updated_at, $articleid);
-
-        if (!$stmt->execute()) { 
-            echo "Error: " . $stmt->error; 
+            $error .= "<p class='error'><b>!!</b>Title and content cannot be empty.</p>";
         }
         else {
-            header("Location: article.php?id=" . $articleid);
-            exit;
+            $stmt = $con->prepare("UPDATE articles SET title = ?, content = ?, updated_at = ? WHERE id = ?");
+            $stmt->bind_param("sssi", $title, $content, $updated_at, $articleid);
+
+            if (!$stmt->execute()) { 
+                echo "Error: " . $stmt->error; 
+            }
+            else {
+                header("Location: article.php?id=" . $articleid);
+                exit;
+            }
         }
     }
 
@@ -64,6 +67,8 @@
     <div class="header">
         <h1>Editing an article</h1>
     </div>
+
+    <?= $error ?>
 
     <form method="POST" action="">
         <div class="fields_box">
