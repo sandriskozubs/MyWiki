@@ -94,6 +94,7 @@
     <div class="article_box">
         <hr>
         <?php
+        
             while ($row = $result->fetch_assoc()) {
                 echo "<div class='article_box'>";
                     echo "<h2><a href='article.php?id=" . htmlspecialchars($row["id"]) . "'>" . htmlspecialchars($row["title"]) . "</a></h2>";

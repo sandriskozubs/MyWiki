@@ -12,7 +12,7 @@
         $password = $_POST["password"];
 
         if (empty($username) || empty($password)) {
-            $error .= "<p id='error'><b>!!</b> Dont leave any fields empty!</p>";
+            $error .= "<p class='error'><b>!!</b> Dont leave any fields empty!</p>";
         }
         else {
             $stmt = $con->prepare("SELECT username, password FROM admins WHERE username = ?");
@@ -22,7 +22,7 @@
             $result = $stmt->get_result();
 
             if ($result->num_rows == 0) {
-                $error .= "<p id='error'><b>!!</b> Incorrect username or password</p>";
+                $error .= "<p class='error'><b>!!</b> Incorrect username or password</p>";
             }
             else {
                 $row = $result->fetch_assoc();
@@ -32,7 +32,7 @@
                     exit;
                 }
                 else {
-                    $error .= "<p id='error'><b>!!</b> Incorrect username or password</p>";
+                    $error .= "<p class='error'><b>!!</b> Incorrect username or password</p>";
                 }
             }
         }

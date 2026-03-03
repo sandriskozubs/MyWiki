@@ -432,7 +432,7 @@ a:hover {
     margin-bottom: 2.5rem;
 }
 
-#error {
+.error {
     color: red;
     font-size: 20px;
 }

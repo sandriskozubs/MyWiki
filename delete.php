@@ -46,11 +46,11 @@
         <h1>Deleting an article</h1>
     </div>
 
-    <p id="error">
+    <p class="error">
         Do you really want to delete this article:
     </p>
     
-    <span class="delete_title" id="error">
+    <span class="delete_title error">
         '<b>
             <?=  htmlspecialchars($article["title"]); ?>
         </b>' ?
@@ -63,7 +63,7 @@
 
             <a class="normal_link" href="article.php?id=<?=  htmlspecialchars($articleid); ?>">
                 <span id="action_return">
-                    <- Return
+                    &larr; Return
                 </span>
             </a>
         </div>
