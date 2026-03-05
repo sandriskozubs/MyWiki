@@ -14,8 +14,6 @@ It's a basic search functionality, so it will be improved in the future.
 Articles are saved with a creation time stamp.
 If an article is edited and the changes are saved, then the article will also have a ***Updated at*** time stamp.
 
-**!!** *Pagination will be implemented soon* **!!**
-
 ## MyWiki's database tables:
 
 **Administrator table**
