@@ -24,6 +24,10 @@ If an article is edited and the changes are saved, then the article will also ha
 
     | id | title | content | created_at | updated_at |
 
+**Article_images table**
+
+    | id | article_id | file_path |
+
 **Roles table**
 
     | id | role |
