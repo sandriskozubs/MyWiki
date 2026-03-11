@@ -85,7 +85,7 @@
         }
     ?>
     
-    <div class="article_box">
+    <div class="articles">
         <hr>
             <?php foreach ($articles as $article) { ?>
                 <div class='article_box'>

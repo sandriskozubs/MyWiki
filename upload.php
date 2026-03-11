@@ -51,7 +51,7 @@
         }
         else {
             $error .= "<span id='error'>You cannot upload this type of file!</span>";
-        }   
+        }
     }
 
 ?>

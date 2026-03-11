@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    
+    // echo password_hash("", PASSWORD_DEFAULT);
     $error = "";
 
     require("connection.php");

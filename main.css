@@ -9,7 +9,7 @@ body {
 
 hr {
     border: 2px solid rgb(52, 52, 52);
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
 .header {
@@ -184,9 +184,14 @@ h2 a:hover {
     background-color: white;
 }
 
-.article_box {
-    margin-top: 1.25rem;
+.articles {
+    background-color: white;
+    padding: 1rem;
     margin-bottom: 1.25rem;
+    margin-top: 0.75rem;
+}
+
+.article_box {
     background-color: white;
     padding: 1.5rem;
 }
