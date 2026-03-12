@@ -1,6 +1,7 @@
 <?php
 
-    if (!isset($_SESSION["admin"])) {
+    if (!isset($_SESSION["user"])) {
         header("Location: index.php");
         exit;
     }
+

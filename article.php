@@ -48,13 +48,10 @@
     }
 
     $stmt = $con->prepare("SELECT title, content, created_at, updated_at FROM articles WHERE id = ?");
-
     $stmt->bind_param("i", $articleid);
-
     $stmt->execute();
 
     $result = $stmt->get_result();
-
     $article = $result->fetch_assoc();
 
 ?>

@@ -13,7 +13,7 @@
 
     $total_pages = ceil($total_results["total"] / $result_limit);
 
-    $stmt->free_result();
+    $stmt->close();
 
     $page = "";
 
