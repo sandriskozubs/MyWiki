@@ -56,9 +56,9 @@
     </p>
     
     <span class="delete_title error">
-        '<b>
+        <b>
             <?=  htmlspecialchars($article["title"]); ?>
-        </b>' ?
+        </b>
     </span>
 
     <form method="POST" action="">

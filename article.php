@@ -91,7 +91,7 @@
                     </div>
 
                     <div class='article_content'>
-                        <?= nl2br(parseImages($article["content"])) ?>
+                        <?= nl2br(parseImages(htmlspecialchars($article["content"]))) ?>
                     </div>
                 </div>
         <?php
