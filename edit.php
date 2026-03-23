@@ -1,6 +1,7 @@
 <?php
 
     session_start();
+    date_default_timezone_set("Europe/Riga");
 
     $error = "";
 
@@ -10,7 +11,7 @@
     $articleid = isset($_GET["id"]) ? (int)$_GET["id"] : 0;
 
     if ($articleid <= 0) {
-        echo "Invalid article ID.";
+        echo "Nederīgs raksta ID.";
         exit;
     }
 
@@ -22,21 +23,21 @@
     $article = $result->fetch_assoc();
 
     if (!$article) { 
-        echo "Article not found!"; 
+        echo "Raksts nav atrasts!"; 
         exit; 
     }
 
     if (isset($_POST["submit"])) {
         $title = trim($_POST["title"]); 
         $content = trim($_POST["content"]); 
-        $updated_at = date("Y-m-d");
+        $updated_at = date("Y-m-d H:i:s");
 
         if (empty($title) || empty($content)) {
             $error .= "<p class='error'><b>!!</b> Lauki nedrīkst būt tukši!</p>";
         }
         else {
             $stmt = $con->prepare("UPDATE articles SET title = ?, content = ?, updated_at = ? WHERE id = ?");
-            $stmt->bind_param("sssi", $title, $content, $updated_at, $articleid);
+            $stmt->bind_param("sssi", $title, $content, $updated_at,$articleid);
 
             if (!$stmt->execute()) { 
                 echo "Error: " . $stmt->error; 

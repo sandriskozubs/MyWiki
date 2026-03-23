@@ -1,6 +1,7 @@
 <?php
 
     session_start();
+    date_default_timezone_set("Europe/Riga");
 
     require("connection.php");
     require("auth.php");
@@ -11,14 +12,13 @@
 
         $title = trim($_POST["title"]); 
         $content = trim($_POST["content"]); 
-        $created_at = date("Y-m-d");
 
         if ($title === "" || $content === "") { 
-            $error .= "<p class='error'><b>!!</b> Title and content cannot be empty</p>"; 
+            $error .= "<p class='error'><b>!!</b> Lauki nedrīkst būt tukši</p>"; 
         }
         else {
-            $stmt = $con->prepare("INSERT INTO articles (title, content, created_at) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $title, $content, $created_at);
+            $stmt = $con->prepare("INSERT INTO articles (title, content) VALUES (?, ?)");
+            $stmt->bind_param("ss", $title, $content);
 
             if (!$stmt->execute()) {
                 $error = "Error: " . $stmt->error;
@@ -37,7 +37,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <title>Create</title>
+    <title>Veidot</title>
 </head>
 <body>
     <h1>Rakstu veidošana</h1>

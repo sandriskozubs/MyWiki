@@ -8,7 +8,7 @@
     $articleid = isset($_GET["id"]) ? (int) $_GET["id"] : 0;
 
     if ($articleid <= 0) {
-        echo "Invalid article ID.";
+        echo "Nederīgs raksta ID.";
         exit;
     }
 
@@ -21,7 +21,7 @@
     $article = $result->fetch_assoc();
 
     if (!$article) { 
-        echo "<p>Article not found.</p>"; 
+        echo "<p>Raksts nav atrasts</p>"; 
         exit;
     }
 
@@ -44,7 +44,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <title>Editing</title>
+    <title>Rediģēšana</title>
 </head>
 <body>
     <div>

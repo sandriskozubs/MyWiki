@@ -8,7 +8,7 @@
     $articleid = isset($_GET["id"]) ? (int)$_GET["id"] : 0;
 
     if ($articleid <= 0) {
-        echo "Invalid article ID.";
+        echo "Nederīgs raksta ID.";
         exit;
     }
 
@@ -64,7 +64,10 @@
     <title>
         <?php 
             if (!$article) {
-                echo "Article not found!";
+                echo "Raksts nav atrasts!";
+            }
+            else {
+                echo $article["title"];
             }
         ?>
     </title>
@@ -74,7 +77,7 @@
 
         <?php 
             if (!$article) {
-                echo "Article not found!";
+                echo "Raksts nav atrasts!";
             }
             else {
         ?>

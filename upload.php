@@ -61,7 +61,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <title>Upload</title>
+    <title>Augšupielādēt</title>
 </head>
 <body>
     <form class="upload_form" action="upload.php?id=<?= htmlspecialchars($articleid) ?>" method="POST" enctype="multipart/form-data">
