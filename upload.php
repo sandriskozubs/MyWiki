@@ -77,12 +77,12 @@
 
         <div class="action_box2">
             <button type="submit" id="action_upload" name="submit">
-                Upload
+                Augšupielādēt
             </button>
 
             <a class="normal_link" href="select.php">
                 <span id="action_return">
-                    &larr; Return
+                    &larr; Atgriezties
                 </span>
             </a>
         </div>

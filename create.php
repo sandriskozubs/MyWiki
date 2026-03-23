@@ -40,7 +40,7 @@
     <title>Create</title>
 </head>
 <body>
-    <h1>Creating an article</h1>
+    <h1>Rakstu veidošana</h1>
 
     <?php
         if (!empty($error)) {
@@ -55,14 +55,14 @@
                 type="text" 
                 class="input_field" 
                 name="title" 
-                placeholder="Title..." 
+                placeholder="Virsraksts..." 
                 value="<?= htmlspecialchars($title ?? '') ?>"
             >
 
             <textarea
                 required 
                 id="input_content" 
-                placeholder="This article is about..." 
+                placeholder="Šis raksts ir par..." 
                 name="content" 
                 rows="6" 
                 cols="100" 
@@ -73,12 +73,12 @@
                     type="submit" 
                     id="action_save" 
                     name="submit" 
-                    value="Save"
+                    value="Saglabāt"
                 >
 
                 <a class="normal_link" href="select.php">
                     <span id="action_return">
-                        &larr; Return
+                        &larr; Atgriezties
                     </span>
                 </a>
             </div>

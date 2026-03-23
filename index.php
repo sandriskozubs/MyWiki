@@ -55,14 +55,14 @@
     <?= $error ?>
 
     <div class="login_info">
-        <span>Login to use MyWiki</span>
+        <span>Pieslēdzieties, lai lietotu MyWiki</span>
     </div>
 
     <form method="POST" action="">
         <div class="login_box">
-            <input required type="text" class="input_field" placeholder="Username..." name="username">
-            <input required type="password" class="input_field" placeholder="Password..." name="password">
-            <input type="submit" id="action_login" name="submit" value="Login">
+            <input required type="text" class="input_field" placeholder="Lietotājvārds..." name="username">
+            <input required type="password" class="input_field" placeholder="Parole..." name="password">
+            <input type="submit" id="action_login" name="submit" value="Pieslēgties">
         </div>
     </form>
 </body>

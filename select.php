@@ -38,24 +38,24 @@
 
     <div id="logout">
         <a class="normal_link" href="logout.php">
-            <span id="action_logout">Logout</span>
+            <span id="action_logout">Beigt darbu</span>
         </a>
     </div>
 
     <div class="header">
-        <h1>What are you looking for?</h1>
+        <h1>Kas šobrīd aktuāls?</h1>
     </div>
 
     <form method="GET">
         <div class="search_field">
-            <input type="text" class="input_field" name="search_field" placeholder="An article about..."> 
+            <input type="text" class="input_field" name="search_field" placeholder="Stāsts par..."> 
             <input type="submit" id="search_button" value="&#8594;">
         </div>
     </form>
 
     <div class="action_line">
         <a class="normal_link" href="create.php">
-            <span id="action_create">Create article</span>
+            <span id="action_create">Izveidot rakstu</span>
         </a>  
     </div>
 
@@ -108,7 +108,7 @@
 
             <?php if ($page > 1) {?>
                 <a class="normal_link" href="select.php?page=<?= $page - 1 ?><?= $search_query ?>">
-                    <span class="pages_buttons">&larr; Previous</span>
+                    <span class="pages_buttons">&larr; Iepriekšējā</span>
                 </a>
             <?php } ?>
 
@@ -120,7 +120,7 @@
 
             <?php if ($page < $total_pages) {?>
                 <a class="normal_link" href="select.php?page=<?= $page + 1 ?><?= $search_query ?>">
-                    <span class="pages_buttons">Next &rarr;</span>
+                    <span class="pages_buttons">Nākamā &rarr;</span>
                 </a>
             <?php } ?>
     </div>

@@ -84,14 +84,14 @@
                     </h2>
 
                     <div class="article_info">
-                        Created at: <?= $article["created_at"] ?>
+                        Uztaisīts: <?= $article["created_at"] ?>
                         <br>
                         <?php 
                             if ($article["updated_at"] == "") {
                                 echo "";
                             }
                             else {
-                                echo "Updated at: " . $article["updated_at"];
+                                echo "Rediģēts: " . $article["updated_at"];
                             }
                         ?>
                     </div>
@@ -107,19 +107,19 @@
         <div class="action_box">
             <a class="normal_link" href="select.php">
                 <span id="action_return">
-                    &larr; Return
+                    &larr; Atgriezties
                 </span>
             </a>
 
             <a class="normal_link" href="edit.php?id=<?= $articleid; ?>">
                 <span id="action_edit">
-                    Edit
+                    Rediģēt
                 </span>
             </a>
 
             <a class="normal_link" href="delete.php?id=<?= $articleid; ?>">
                 <span id="action_delete">
-                    Delete
+                    Dzēst
                 </span>
             </a>
         </div>

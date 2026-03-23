@@ -48,27 +48,27 @@
 </head>
 <body>
     <div>
-        <h1>Deleting an article</h1>
+        <h1>Rakstu dzēšana</h1>
     </div>
 
     <p class="error">
-        Do you really want to delete this article:
+        Vai tiešām vēlaties dzēst šo rakstu:
     </p>
     
     <span class="delete_title error">
         <b>
-            <?=  htmlspecialchars($article["title"]); ?>
+            <?=  htmlspecialchars($article["title"]) . " ?"; ?>
         </b>
     </span>
 
     <form method="POST" action="">
         
         <div class="action_box2">
-            <input type="submit" id="action_delete" name="submit" value="Delete">
+            <input type="submit" id="action_delete" name="submit" value="Dzēst">
 
             <a class="normal_link" href="article.php?id=<?=  htmlspecialchars($articleid); ?>">
                 <span id="action_return">
-                    &larr; Return
+                    &larr; Atgriezties
                 </span>
             </a>
         </div>

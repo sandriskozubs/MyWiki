@@ -65,7 +65,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>Editing an article</h1>
+        <h1>Rakstu rediģēšana</h1>
     </div>
 
     <?= $error ?>
@@ -77,7 +77,7 @@
             <input type="text" class="input_field" name="title" placeholder="Title..." value="<?= htmlspecialchars($article["title"]) ?>">
 
             <a class="normal_link" href="<?= "upload.php?id=" . htmlspecialchars($articleid) ?>">
-                <span id="action_upload">Upload an image</span>
+                <span id="action_upload">Augšupielādēt attēlu</span>
             </a>
 
             <textarea 
@@ -87,11 +87,11 @@
                 rows="6" cols="100"><?= htmlspecialchars($article["content"]) ?></textarea>
             
             <div class="action_box2">
-                <input type="submit" id="action_save" name="submit" value="Save">
+                <input type="submit" id="action_save" name="submit" value="Saglabāt">
 
                 <a class="normal_link" href="article.php?id=<?= htmlspecialchars($articleid) ?>">
                     <span id="action_return">
-                        &larr; Return
+                        &larr; Atgriezties
                     </span>
                 </a>
             </div>
