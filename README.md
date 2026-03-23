@@ -1,6 +1,6 @@
 # Kas ir MyWiki? :cd:
 
-**MyWiki** ir lokāla Vikipēdija, kurā varat vaidot rakstus.
+**MyWiki** ir lokāla Vikipēdija, kurā varat veidot rakstus.
 
 Varat to izmantot kā vietu, kur glabāt jums noderīgu informāciju.
 
