@@ -22,7 +22,7 @@
             $result = $stmt->get_result();
 
             if ($result->num_rows == 0) {
-                $error .= "<p class='error'><b>!!</b> Incorrect username or password</p>";
+                $error .= "<p class='error'><b>!!</b> Nepareizs lietotājvārds vai parole</p>";
             }
             else {
                 $row = $result->fetch_assoc();
@@ -32,7 +32,7 @@
                     exit;
                 }
                 else {
-                    $error .= "<p class='error'><b>!!</b> Incorrect username or password</p>";
+                    $error .= "<p class='error'><b>!!</b> Nepareizs lietotājvārds vai parole</p>";
                 }
             }
         }

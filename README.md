@@ -1,51 +1,86 @@
-# What is MyWiki? :cd:
+# Kas ir MyWiki? :cd:
 
-**MyWiki** is a local Wikipedia, in which you can add your own articles.
+**MyWiki** ir lokāla Vikipēdija, kurā varat vaidot rakstus.
 
-You can use it as a place, where you store information thats useful to you.
+Varat to izmantot kā vietu, kur glabāt jums noderīgu informāciju.
 
-# How does MyWiki work? :wrench:
+# Kā darbojas MyWiki? :wrench:
 
-Administrators can **view**, **edit**, **create** and **delete** articles.
+Administratori var **skatīt**, **rediģēt**, **izveidot** un **dzēst** rakstus.
 
-You can also search for articles. 
-It's a basic search functionality, so it will be improved in the future. 
+Ir iespējams arī meklēt rakstus.
 
-Articles are saved with a creation time stamp.
-If an article is edited and the changes are saved, then the article will also have a ***Updated at*** time stamp.
+Raksti tiek saglabāti ar izveides laika zīmogu.
+Ja raksts tiek rediģēts un izmaiņas tiek saglabātas, tad rakstam būs arī laika zīmogs ***Atjaunināts plkst.***.
 
-## MyWiki's database tables:
+## MyWiki datubāzes tabulas:
 
-**Administrator table**
+**Administratora tabula**
 
-    | id | username | password | role | 
+| id | lietotājvārds | parole | loma
 
-**Article table**
+**Rakstu tabula**
 
-    | id | title | content | created_at | updated_at |
+| id | nosaukums | saturs | izveidots_laikā | atjaunināts_laikā | autora_id
 
-**Article_images table**
+**Rakstu_attēlu_table**
 
-    | id | article_id | file_path |
+| id | raksta_id | faila_ceļš
 
-**Roles table**
+**Lomu tabula**
 
-    | id | role |
+| id | role |
 
-# How do I start using MyWiki? :arrow_down:
+# Kā sākt lietot MyWiki? :arrow_down:
 
-1.  Open your IDE/text editor.
+1. Atveriet savu IDE/teksta redaktoru.
 
-2.  Clone this repository by typing this in the terminal:
-    `git clone https://github.com/sandriskozubs/MyWiki.git`
-    <br>
-3. Then create a database and the necessary tables.
-4. Change the constant values in `connection.php` file.
+2. Klonējiet šo repozitoriju, terminālī ierakstot šo:
+`git clone https://github.com/sandriskozubs/MyWiki.git`
+<br>
+3. Pēc tam izveidojiet datubāzi un nepieciešamās tabulas.
 
-    
-        const HOST = "localhost"; // Your host name 
-        const USERNAME = "root"; // Your database username
-        const PASSWORD = ""; // Your database password
-        const DB_NAME= "my_wiki1"; // The database name
-    <br>
-5. And thats it!
+### Lomas
+
+`CREATE TABLE roles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    role VARCHAR(50) NOT NULL
+);`
+
+### Lietotāji
+
+`CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role INT NOT NULL,
+    FOREIGN KEY (role) REFERENCES roles(id)
+);`
+
+### Raksti
+
+`CREATE TABLE articles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NULL ON UPDATE CURRENT_TIMESTAMP
+);`
+
+### Rakstu attēli
+
+`CREATE TABLE article_images (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    article_id INT NOT NULL,
+    file_path VARCHAR(255) NOT NULL,
+    FOREIGN KEY (article_id) REFERENCES articles(id)
+);`
+
+4. Mainiet konstantes vērtības `connection.php` failā.
+
+const HOST = "localhost"; // Jūsu resursdatora nosaukums
+const USERNAME = "root"; // Jūsu datubāzes lietotājvārds
+const PASSWORD = ""; // Jūsu datubāzes parole
+const DB_NAME= "my_wiki1"; // Datubāzes nosaukums
+<br>
+5. Un tas arī viss!

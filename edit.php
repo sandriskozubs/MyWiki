@@ -32,7 +32,7 @@
         $updated_at = date("Y-m-d");
 
         if (empty($title) || empty($content)) {
-            $error .= "<p class='error'><b>!!</b>Title and content cannot be empty.</p>";
+            $error .= "<p class='error'><b>!!</b> Lauki nedrīkst būt tukši!</p>";
         }
         else {
             $stmt = $con->prepare("UPDATE articles SET title = ?, content = ?, updated_at = ? WHERE id = ?");
