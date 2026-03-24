@@ -13,6 +13,13 @@ Ir iespējams arī meklēt rakstus.
 Raksti tiek saglabāti ar izveides laika zīmogu.
 Ja raksts tiek rediģēts un izmaiņas tiek saglabātas, tad rakstam būs arī laika zīmogs ***Atjaunināts plkst.***.
 
+Rakstu attēliem iespējams pievienot izmēru:
+
+Atļautie formāti: jpg, jpeg, png.
+
+`{img:attēla_nosaukums.png|attēla_platums_pikseļos}`
+`{img:ainava1.png|200}`
+
 ## MyWiki datubāzes tabulas:
 
 **Lietotāju tabula**<br>
